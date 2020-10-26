@@ -1,0 +1,22 @@
+{% extends "global.html" %}
+
+{% block content %}
+<div class="section title">
+    Kyle O'Neill - Software Engineer
+</div>
+<div class="section content">
+    {{ section.content | safe }}
+</div>
+<div class="section pages">
+    {% set blog_section = get_section(path="blog/_index.md") %}
+    {% for page in blog_section.pages | slice(end=5) %}
+        <div class="page">
+            <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+            <div class="info">
+                {{ page.date | date(format="%B %e, %Y") }}
+            </div>
+        </div>
+    {% endfor %}
+    <p><a href="{{ blog_section.permalink | safe }}">All blog posts</a></p>
+</div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "global.html" %}
+
+{% block content %}
+<div class="section title">
+    {{ page.title | safe }}
+    <div class="subtitle">
+        {{ page.date | date(format="%B %e, %Y") }}
+    </div>
+</div>
+<div class="section content">
+    {{ page.content | safe }}
+</div>
+<div class="section navigation">
+    {% if page.earlier %}
+        Previous article: {{ page.earlier.permalink }}
+    {% endif %}
+    {% if page.later %}
+        Next article: {{ page.later.permalink }}
+    {% endif %}
+</div>
+{% endblock content %}

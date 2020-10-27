@@ -18,7 +18,7 @@ PIL stands for Python Imaging Library and was a library which allowed Python to 
 
 ## Tesseract OCR
 
-One of the largest draws of Python is how its syntax and ecosystem allow for complicated expressions and tasks to be utilized in few lines of code. Python is routinely used in machine learning applications, like OCR. [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) is an open source OCR engine maintained by Google. [PyTesseract](https://pypi.org/project/pytesseract/) is a wrapper for Tesseract allowing Python to use the OCR engine.
+One of the largest draws of Python is how its syntax and ecosystem allow for complicated expressions and tasks to be utilized in few lines of code. Python is routinely used in machine learning applications, like OCR ([Optical Character Recognition](https://en.wikipedia.org/wiki/Optical_character_recognition)). [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) is an open source OCR engine maintained by Google. [PyTesseract](https://pypi.org/project/pytesseract/) is a wrapper for Tesseract allowing Python to use the OCR engine.
 
 ## Putting It All Together
 
@@ -36,9 +36,9 @@ probable_string = pytesseract.image_to_string(img)
 print(f"Tesseract thinks our image says: {probable_string}")
 ```
 
-The above snippit will create a square image out of your computer monitor starting from the top left corner with a length and width of 100 pixels. It passes this image to Tesseract, which will try to turn that image into a string.
+The above snippet will create a square image out of your computer monitor starting from the top left corner with a length and width of 100 pixels. It passes this image to Tesseract, which will try to turn that image into a string.
 
-Surprised about how easy it was to come this far, I assumed that I was essentially finished with the "read values from the screen" portion of the program. I got into a League of Legends match and pointed the program to the area of the screen where my health was and took damage, expecting the `probable_string` variable in the above snippit to return my health value. The string did not show health values, it did not even return numbers. The output look like garbled and randomized text.
+Surprised about how easy it was to come this far, I assumed that I was essentially finished with the "read values from the screen" portion of the program. I got into a League of Legends match and pointed the program to the area of the screen where my health was and took damage, expecting the `probable_string` variable in the above snippet to return my health value. The string did not show health values, it did not even return numbers. The output look like garbled and randomized text.
 
 ## Training Tesseract
 
@@ -48,7 +48,7 @@ I got into another match and took screenshots at various health values ensuring 
 
 ![health](ex_health.png)
 
-I added an image processing step to the code snippit above to make the values easier for Tesseract to read. I used this processing on the health bar screenshots to do the same for the training data. The below code snippit details this processing.
+I added an image processing step to the code snippet above to make the values easier for Tesseract to read. I used this processing on the health bar screenshots to do the same for the training data. The below code snippet details this processing.
 
 ```python
 def process_image(img):
@@ -74,7 +74,11 @@ This function splits an image into its red, green, and blue channels. It then it
 
 ![processed_health](processed_health.png)
 
-Next, box files must be generated for each health image. A box file is a series of symbols and coordinates describing the text content of an image and is used during training so Tesseract knows when a model is correct. Tesseract can generate box files but the file will almost certainly need to be manually corrected. The generation can be done on a terminal like this: `tesseract my_training_set.my_photo.exp0.png my_training_set.font.exp0 batch.nochop makebox`.
+Next, box files must be generated for each health image. A box file is a series of symbols and coordinates describing the text content of an image and is used during training so Tesseract knows when a model is correct. Tesseract can generate box files but the file will almost certainly need to be manually corrected. The generation can be done on a terminal like this: 
+
+```sh
+$ tesseract my_training_set.my_photo.exp0.png my_training_set.font.exp0 batch.nochop makebox
+```
 
 The first four lines of a corrected box file for the processed health image just above will look like this:
 
@@ -97,7 +101,9 @@ Trying the process again with the new model improves accuracy a great deal - Tes
 
 In the end I was able to get Tesseract to be correct >99% of the time by processing the image slightly more and by using the engine's configuration settings. Even though the training route did not work, it was a lot of fun to learn how to train my own model. In the `image_to_string` method I set my config to:
 
- `config="--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789/"`.
+ ```
+ config="--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789/"
+ ```
 - psm stands for "page segmentation mode" and --psm 6 tells Tesseract to assume that the image is going to be a single uniform block of text.
 - oem stands for "OCR Engine mode" and --oem 3 tells Tesseract to use the default setting
 - -c allows us to set config variables. The variable `tessedit_char_whitelist` tells Tesseract what characters it can use when turning an image into text. For this program the integers 0-9 are needed as well as the "/" between current and max health values.

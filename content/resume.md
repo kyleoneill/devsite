@@ -60,7 +60,7 @@ I attended UAlbany for four and a half years, earning a Bachelor's degree in Dig
 
 ## LeagueBot
 
-A [Discord](https://discord.com/) chat bot which utilizes the [Riot API](https://developer.riotgames.com/) to display information about a given users [League of Legends](https://na.leagueoflegends.com/en-us/) account and other game information, such as champion builds and counters.
+A [Discord](https://discord.com/) chat bot which utilizes the [Riot API](https://developer.riotgames.com/) to display information about a given users [League of Legends](https://na.leagueoflegends.com/en-us/) account and other game information, such as champion builds and counters. Written in NodeJS.
 
 ## Norgannon
 

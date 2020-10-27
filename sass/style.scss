@@ -119,7 +119,7 @@ $header-foreground: $white;
 
 @media only screen and (min-width: 768px) {
     .section.title {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 }
 
@@ -168,6 +168,16 @@ $header-foreground: $white;
 }
 
 .section.pages .page .info a {
+    font-size: 1rem;
+}
+
+pre {
+    padding: 1rem;
+    display: block;
+    overflow: auto;
+}
+
+code {
     font-size: 1rem;
 }
 

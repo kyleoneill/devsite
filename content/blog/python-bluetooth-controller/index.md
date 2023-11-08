@@ -3,9 +3,6 @@ title = "Python Bluetooth Controller using OCR"
 description = "Figuring out how to utilize OCR and BlueTooth through Python"
 slug = "python-bluetooth-controller"
 date = 2020-10-26
-[taxonomies]
-categories = ["web development"]
-tags = ["python", "ocr", "bluetooth"]
 +++
 
 # LED Strips and Video Games

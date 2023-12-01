@@ -80,7 +80,9 @@ This program is made to be run on Linux, assembly is platform specific.
 ## Sections
 There are two "sections" we care about right now, `.data` and `.text`.
 
-The data section is where we declare static variables. Here, we define a `msg` variable which will hold the string `"Hello world"` with a carriage return and a line feed (newline) after it. The `db` stands for "define bytes" and allocates bytes to hold our string value.
+The data section is where we declare static variables. Here, we define a `msg` variable which will hold the string `"Hello world"`. The `13,10` portion of our string
+corresponds with the ASCII characters for "carriage return" and "line feed". This is akin to writing `"Hello world\r\n"` in a language like Python. The `db`
+stands for "define bytes" and allocates bytes to hold our string value.
 
 The text section is where we actually write our program. Our text section begins with `global _main`, which defines the entry-point for our program.
 
@@ -88,7 +90,7 @@ The text section is where we actually write our program. Our text section begins
 Comments in nasm begin with `;`.
 
 ## Instructions
-Our `_main` function contains four `mov` instructions, a syscall, and then a jump to another area in the assembly. The `mov` instruction takes the format of `MOV [destination] [source]`, where we are moving a value from the source (which can be a static value, variable, or another register) into the destination. In the `mov rax, 1` instruction we are moving the static value `1` into the `rax` register. A register is a tiny piece of memory your CPU can access very quickly. A list of registers can be found in many places on the internet, [this Stanford resource](https://web.stanford.edu/class/cs107/guide/x86-64.html) being an example.
+Our `_main` function contains four `mov` instructions, a syscall, and then a jump to another area in the assembly. The `mov` instruction takes the format of `MOV <destination> <source>`, where we are moving a value from the source (which can be a static value, variable, or another register) into the destination. In the `mov rax, 1` instruction we are moving the static value `1` into the `rax` register. A register is a tiny piece of memory your CPU can access very quickly. A list of registers can be found in many places on the internet, [this Stanford resource](https://web.stanford.edu/class/cs107/guide/x86-64.html) being an example.
 
 ## What is a syscall?
 When working with assembly, we work in a low level space where privilege is an important concept and we need to care about "userspace" and "kernel-space". Our program runs in "userspace" and lacks permissions to do many of the operations we want to do, like write to an output and get user input. We need to ask the OS to do those things for us. A syscall suspends our program and returns control to the OS, which will then examine pre-determined registers for data which tells it what we want it to do.

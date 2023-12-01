@@ -4,7 +4,7 @@ This site is built using [Zola](https://www.getzola.org/), a static site generat
 ## Building
 Run the following command to build the site, the build will be output in a folder named `public`.
 ```$
-$ zola serve
+$ zola build
 ```
 
 ## Testing

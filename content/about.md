@@ -16,7 +16,7 @@ I'm a software engineer and web developer.
 
 I graduated from the University at Albany (SUNY) in December of 2018 with a Bachelor's in Digital Forensics. The program had several courses in programming and it quickly became my primary passion.
 
-I previously worked at [capSpire](https://www.capspire.com/) and [Rational Enterprise](https://www.rationalenterprise.com/) and interned at [General Electric](https://www.ge.com/power).
+I currently work at [WB Games New York](https://www.wbgamesny.com/). I previously worked at [capSpire](https://www.capspire.com/) and [Rational Enterprise](https://www.rationalenterprise.com/) and interned at [General Electric](https://www.ge.com/power).
 
 ## Contact me
 

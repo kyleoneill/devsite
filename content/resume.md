@@ -16,10 +16,19 @@ This resume can be viewed as a [PDF](/resume_kyleoneill.pdf)
 
 *Troy, New York*
 
-**February 2024 - Present** - Associate Software Engineer
+**January 2026 - Present** - Software Engineer
 
 I work on the development of Hydra Studio, a services platform written in Python used across Warner Bros. Games to provide network capability for the
-organization's video games. I develop features used for video game management and marketing, like bug tracking and Twitch drops.
+organization's video games. I develop features used for video game management and marketing.
+
+**February 2024 - December 2025** - Associate Software Engineer
+
+I wrote design docs and implemented features for Hydra Studio, including:
+- Bug Reporting Platform (reports, comments, voting, etc.)
+- Twitch Drops
+- Code Redemption
+
+I fixed bugs after receiving client reports and feedback and wrote MongoDB migrations for production environments.
 
 **June 2021 - February 2024** - QA Engineer
 
